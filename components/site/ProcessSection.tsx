@@ -55,43 +55,42 @@ export function ProcessSection() {
   const [activeStep, setActiveStep] = useState(0);
 
   return (
-    <section id="process" className="px-6 md:px-14 py-24 md:py-36 max-w-7xl mx-auto">
+    <section id="process" className="px-5 sm:px-8 md:px-14 py-16 sm:py-28 max-w-7xl mx-auto">
       <Reveal>
-        <span className="text-xs tracking-[0.3em] uppercase text-[#1A0F0A]/60">
+        <span className="text-xs tracking-[0.3em] uppercase text-[#8A7664] font-mono block mb-2">
           — Design Methodology
         </span>
-        <h2 className="mt-4 font-display text-4xl md:text-5xl lg:text-6xl leading-[1.05]">
-          A quiet, methodical journey<br />from concept to lived reality.
+        <h2 className="font-display text-3xl sm:text-5xl lg:text-6xl leading-[1.08] text-[#141210]">
+          A quiet, methodical journey<br className="hidden sm:inline" /> from concept to lived reality.
         </h2>
       </Reveal>
 
-      <div className="mt-14 grid lg:grid-cols-12 gap-8 items-start">
+      <div className="mt-10 sm:mt-14 grid lg:grid-cols-12 gap-6 sm:gap-8 items-start">
         {/* Step Navigation Cards */}
-        <div className="lg:col-span-5 space-y-3">
+        <div className="lg:col-span-5 space-y-2.5">
           {steps.map((step, index) => {
             const isSelected = activeStep === index;
-            const Icon = step.icon;
             return (
-              <Reveal key={step.number} delay={index * 70} variant="slide-right">
+              <Reveal key={step.number} delay={index * 60} variant="slide-right">
                 <button
                   onClick={() => setActiveStep(index)}
-                  className={`w-full text-left p-6 rounded-2xl transition-all duration-500 border flex items-start gap-4 cursor-pointer ${
+                  className={`w-full text-left p-4 sm:p-5 rounded-2xl transition-all duration-300 border flex items-center sm:items-start gap-4 cursor-pointer ${
                     isSelected
-                      ? "bg-[#1A0F0A] text-[#F8F7F4] border-[#1A0F0A] shadow-md"
-                      : "bg-[#F1EFEA]/60 text-[#1A0F0A] border-transparent hover:bg-[#F1EFEA]"
+                      ? "bg-[#141210] text-[#FAF8F5] border-[#141210] shadow-sm"
+                      : "bg-[#F2EEE9]/70 text-[#141210] border-transparent hover:bg-[#F2EEE9]"
                   }`}
                 >
                   <span
-                    className={`font-mono text-xs tracking-wider px-2.5 py-1 rounded-full ${
+                    className={`font-mono text-xs tracking-wider px-2.5 py-1 rounded-full shrink-0 ${
                       isSelected
-                        ? "bg-[#F8F7F4]/15 text-[#F8F7F4]"
-                        : "bg-[#1A0F0A]/5 text-[#1A0F0A]/60"
+                        ? "bg-[#FAF8F5]/15 text-[#FAF8F5]"
+                        : "bg-[#141210]/5 text-[#141210]/60"
                     }`}
                   >
                     {step.number}
                   </span>
-                  <div className="flex-1">
-                    <h3 className="font-display text-xl leading-snug flex items-center justify-between">
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-display text-lg sm:text-xl leading-snug truncate">
                       {step.title}
                     </h3>
                   </div>
@@ -104,40 +103,40 @@ export function ProcessSection() {
         {/* Selected Step Display Panel */}
         <div className="lg:col-span-7">
           <Reveal variant="scale" key={activeStep}>
-            <div className="bg-[#F1EFEA] rounded-[2.5rem] p-8 md:p-12 border border-[#1A0F0A]/10 relative overflow-hidden min-h-[380px] flex flex-col justify-between">
-              <div className="absolute top-8 right-8 text-8xl font-display text-[#1A0F0A]/5 pointer-events-none select-none">
+            <div className="bg-[#F2EEE9] rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-10 border border-[#141210]/10 relative overflow-hidden flex flex-col justify-between min-h-[360px]">
+              <div className="absolute top-6 right-6 text-7xl sm:text-8xl font-display text-[#141210]/5 pointer-events-none select-none">
                 {steps[activeStep].number}
               </div>
 
               <div>
-                <div className="w-12 h-12 rounded-full bg-[#1A0F0A] text-[#F8F7F4] grid place-items-center mb-6">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#141210] text-[#FAF8F5] grid place-items-center mb-5">
                   {(() => {
                     const Icon = steps[activeStep].icon;
-                    return <Icon size={20} strokeWidth={1.5} />;
+                    return <Icon size={18} strokeWidth={1.5} />;
                   })()}
                 </div>
 
-                <span className="text-xs uppercase tracking-[0.25em] text-[#1A0F0A]/50 block mb-2 font-mono">
+                <span className="text-xs uppercase tracking-[0.25em] text-[#8A7664] block mb-2 font-mono">
                   Phase {steps[activeStep].number} of 04
                 </span>
-                <h3 className="font-display text-3xl md:text-4xl text-[#1A0F0A]">
+                <h3 className="font-display text-2xl sm:text-4xl text-[#141210]">
                   {steps[activeStep].title}
                 </h3>
 
-                <p className="mt-5 text-[#1A0F0A]/75 text-base md:text-lg leading-relaxed max-w-xl">
+                <p className="mt-4 text-[#141210]/80 text-sm sm:text-base leading-relaxed max-w-xl">
                   {steps[activeStep].summary}
                 </p>
               </div>
 
-              <div className="mt-8 pt-6 border-t border-[#1A0F0A]/10">
-                <span className="text-xs uppercase tracking-widest font-medium text-[#1A0F0A]/60 block mb-3">
+              <div className="mt-8 pt-5 border-t border-[#141210]/10">
+                <span className="text-xs uppercase tracking-widest font-medium text-[#141210]/60 block mb-3 font-mono">
                   Key Deliverables:
                 </span>
-                <ul className="grid sm:grid-cols-3 gap-3 text-xs text-[#1A0F0A]/80 font-medium">
+                <ul className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs text-[#141210]/85 font-medium">
                   {steps[activeStep].details.map((item, i) => (
-                    <li key={i} className="flex items-center gap-2 bg-[#F8F7F4] px-3 py-2 rounded-xl border border-[#1A0F0A]/5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#1A0F0A]" />
-                      {item}
+                    <li key={i} className="flex items-center gap-2 bg-[#FAF8F5] px-3 py-2 rounded-xl border border-[#141210]/5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#8A7664] shrink-0" />
+                      <span className="truncate">{item}</span>
                     </li>
                   ))}
                 </ul>

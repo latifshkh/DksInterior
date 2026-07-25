@@ -1,26 +1,27 @@
 import type { Metadata } from "next";
-import { Inter, Fraunces } from "next/font/google";
+import { Plus_Jakarta_Sans, Cormorant_Garamond } from "next/font/google";
 import { Toaster } from "sonner";
 import "./globals.css";
 
-const inter = Inter({
+const sans = Plus_Jakarta_Sans({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
 });
 
-const fraunces = Fraunces({
+const display = Cormorant_Garamond({
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
   variable: "--font-display",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Maison Studio — Interior Design for Considered Living",
+  title: "Maison Studio — Architectural Interior Design",
   description:
-    "Maison Studio designs warm, minimal interiors for homes and spaces — bedroom, bathroom, kitchen, hall, balcony and beyond.",
+    "Maison Studio designs serene, minimal interiors for considered living spaces — bedroom, bathroom, kitchen, hall, balcony and beyond.",
   openGraph: {
-    title: "Maison Studio — Interior Design",
+    title: "Maison Studio — Architectural Interior Design",
     description: "Warm, minimal interiors for homes and considered spaces.",
     type: "website",
   },
@@ -35,11 +36,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${fraunces.variable}`}>
-      <body className="antialiased bg-[#F8F7F4] text-[#1A0F0A]">
+    <html lang="en" className={`${sans.variable} ${display.variable}`}>
+      <body className="antialiased bg-[#FAF8F5] text-[#141210] selection:bg-[#8A7664] selection:text-white">
         {children}
         <Toaster position="bottom-right" />
       </body>
     </html>
   );
 }
+

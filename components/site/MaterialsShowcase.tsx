@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Reveal } from "./Reveal";
-import { Sparkles, Layers } from "lucide-react";
+import { Sparkles } from "lucide-react";
 
 const materials = [
   {
@@ -49,45 +49,45 @@ export function MaterialsShowcase() {
   const activeMaterial = materials.find((m) => m.id === selectedId) || materials[0];
 
   return (
-    <section id="materials" className="px-6 md:px-14 py-24 md:py-36 max-w-7xl mx-auto border-t border-[#1A0F0A]/10">
-      <div className="grid lg:grid-cols-12 gap-12 items-center">
+    <section id="materials" className="px-5 sm:px-8 md:px-14 py-16 sm:py-28 max-w-7xl mx-auto border-t border-[#141210]/10">
+      <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
         {/* Left header & tabs */}
         <div className="lg:col-span-5">
           <Reveal>
-            <span className="text-xs tracking-[0.3em] uppercase text-[#1A0F0A]/60">
+            <span className="text-xs tracking-[0.3em] uppercase text-[#8A7664] font-mono block mb-2">
               — Tactile Architecture
             </span>
-            <h2 className="mt-4 font-display text-4xl md:text-5xl lg:text-6xl leading-[1.05]">
+            <h2 className="font-display text-3xl sm:text-5xl lg:text-6xl leading-[1.08] text-[#141210]">
               Materials that age with dignity.
             </h2>
-            <p className="mt-6 text-[#1A0F0A]/75 text-base leading-relaxed">
+            <p className="mt-4 sm:mt-6 text-[#141210]/80 text-sm sm:text-base leading-relaxed">
               We never use synthetic substitutes. Every room is composed from authentic raw elements that develop a soft, living patina over time.
             </p>
           </Reveal>
 
           {/* Interactive Material Tabs */}
-          <div className="mt-10 space-y-3">
+          <div className="mt-8 space-y-2.5">
             {materials.map((m) => {
               const isActive = m.id === selectedId;
               return (
                 <Reveal key={m.id} variant="fade-up">
                   <button
                     onClick={() => setSelectedId(m.id)}
-                    className={`w-full text-left px-5 py-4 rounded-2xl transition-all duration-300 flex items-center justify-between border cursor-pointer ${
+                    className={`w-full text-left px-4 sm:px-5 py-3.5 rounded-2xl transition-all duration-300 flex items-center justify-between border cursor-pointer ${
                       isActive
-                        ? "bg-[#1A0F0A] text-[#F8F7F4] border-[#1A0F0A] shadow-sm translate-x-1"
-                        : "bg-[#F1EFEA]/40 hover:bg-[#F1EFEA] text-[#1A0F0A] border-transparent"
+                        ? "bg-[#141210] text-[#FAF8F5] border-[#141210] shadow-sm translate-x-1"
+                        : "bg-[#F2EEE9]/60 hover:bg-[#F2EEE9] text-[#141210] border-transparent"
                     }`}
                   >
                     <div>
-                      <span className="font-display text-lg block">{m.name}</span>
-                      <span className={`text-xs uppercase tracking-wider ${isActive ? "text-[#F8F7F4]/70" : "text-[#1A0F0A]/50"}`}>
+                      <span className="font-display text-base sm:text-lg block">{m.name}</span>
+                      <span className={`text-[11px] uppercase tracking-wider ${isActive ? "text-[#FAF8F5]/70" : "text-[#141210]/50"}`}>
                         {m.category}
                       </span>
                     </div>
                     <span
-                      className={`text-xs font-mono px-3 py-1 rounded-full ${
-                        isActive ? "bg-[#F8F7F4]/15 text-[#F8F7F4]" : "bg-[#1A0F0A]/5 text-[#1A0F0A]/60"
+                      className={`text-[11px] font-mono px-2.5 py-1 rounded-full ${
+                        isActive ? "bg-[#FAF8F5]/15 text-[#FAF8F5]" : "bg-[#141210]/5 text-[#141210]/60"
                       }`}
                     >
                       {m.origin}
@@ -102,35 +102,35 @@ export function MaterialsShowcase() {
         {/* Right material preview showcase */}
         <div className="lg:col-span-7">
           <Reveal variant="scale" key={activeMaterial.id}>
-            <div className="relative rounded-[2.5rem] overflow-hidden bg-[#F1EFEA] border border-[#1A0F0A]/10 p-6 md:p-8">
-              <div className="relative aspect-[16/10] rounded-[2rem] overflow-hidden bg-black/5 shadow-inner mb-6">
+            <div className="relative rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden bg-[#F2EEE9] border border-[#141210]/10 p-5 sm:p-7">
+              <div className="relative aspect-[4/3] sm:aspect-[16/10] rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden bg-black/5 shadow-inner mb-5">
                 <Image
                   src={activeMaterial.img}
                   alt={activeMaterial.name}
                   fill
                   sizes="(max-width: 1024px) 100vw, 600px"
-                  className="object-cover transition-transform duration-1000 ease-out hover:scale-105"
+                  className="object-cover transition-transform duration-700 ease-out hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
-                <div className="absolute bottom-4 left-4 right-4 flex justify-between items-end text-white text-xs">
-                  <span className="bg-black/40 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/20">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute bottom-3 left-3 right-3 flex justify-between items-end text-white text-[11px]">
+                  <span className="bg-black/40 backdrop-blur-md px-3 py-1 rounded-full border border-white/20">
                     {activeMaterial.origin}
                   </span>
-                  <span className="bg-black/40 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/20">
+                  <span className="bg-black/40 backdrop-blur-md px-3 py-1 rounded-full border border-white/20">
                     {activeMaterial.category}
                   </span>
                 </div>
               </div>
 
-              <div className="space-y-3">
-                <h3 className="font-display text-2xl md:text-3xl text-[#1A0F0A]">
+              <div className="space-y-2.5">
+                <h3 className="font-display text-2xl sm:text-3xl text-[#141210]">
                   {activeMaterial.name}
                 </h3>
-                <p className="text-[#1A0F0A]/75 text-sm md:text-base leading-relaxed">
+                <p className="text-[#141210]/80 text-xs sm:text-base leading-relaxed">
                   {activeMaterial.description}
                 </p>
-                <div className="pt-4 border-t border-[#1A0F0A]/10 flex items-center gap-2 text-xs font-medium text-[#1A0F0A]/70">
-                  <Sparkles size={14} className="text-[#1A0F0A]" />
+                <div className="pt-3 border-t border-[#141210]/10 flex items-center gap-2 text-xs font-medium text-[#8A7664]">
+                  <Sparkles size={14} className="shrink-0" />
                   <span>Tactile Note: {activeMaterial.tactileNote}</span>
                 </div>
               </div>
