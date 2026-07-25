@@ -5,11 +5,12 @@ import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const links = [
-  { label: "Home", href: "/" },
   { label: "About", href: "/#about" },
   { label: "Spaces", href: "/#spaces" },
+  { label: "Process", href: "/#process" },
+  { label: "Materials", href: "/#materials" },
   { label: "Rooms", href: "/#rooms" },
-  { label: "Inquiry", href: "/inquiry" },
+  { label: "Praise", href: "/#praise" },
 ];
 
 export function Nav() {
